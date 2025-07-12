@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// @ts-ignore
+// @ts-ignore: Vike framework type issue
 const services = [
   { id: '27', title: '4+2R代謝飲食法' },
   { id: '28', title: '健康飲食方案' }
@@ -11,7 +11,7 @@ const services = [
     <h1>服務列表</h1>
     <ul>
       <li v-for="service in services" :key="service.id">
-        <a :href="'/service-us/' + service.id">{{ service.title }}</a>
+        <a :href="`/service-us/${service.id}`">{{ service.title }}</a>
       </li>
     </ul>
   </div>

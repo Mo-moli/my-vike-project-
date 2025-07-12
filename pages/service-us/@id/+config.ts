@@ -1,11 +1,7 @@
-// pages/service-us/@id/+config.ts
+import { services } from '../data'
+
 export default {
   route: '/service-us/@id',
-  
-  head: {
-    title: '服務介紹'
-  },
-
-  onBeforeRender: './+onBeforeRender.ts'
+  title: '服務介紹'
 }
   
