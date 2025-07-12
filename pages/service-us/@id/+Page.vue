@@ -1,7 +1,7 @@
 <!-- pages/service-us/@id/+Page.vue -->
 <script setup lang="ts">
 // @ts-ignore
-import { useHead } from 'vike-vue'
+import { useHead } from '@unhead/vue'
 
 interface Props {
   title: string
