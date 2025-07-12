@@ -1,48 +1,29 @@
 <!-- pages/service-us/@id/+Page.vue -->
 <script setup lang="ts">
+import { useData } from 'vike-vue/useData'
 import type { Service } from '../data'
-import { ref, onMounted } from 'vue'
-
-// @ts-ignore
-const props = defineProps<{
-  service?: Service
-  error?: string
-}>()
-
-const isLoading = ref(true)
-
-onMounted(() => {
-  isLoading.value = false
-})
+const data = useData<Service>()
 </script>
 
 <template>
   <div class="service-detail">
     <nav class="breadcrumb">
+      <a href="/">首頁</a>
+      <span class="separator">/</span>
       <a href="/service-us">服務列表</a>
-      <template v-if="!error">
-        / <span>{{ props.service?.title }}</span>
-      </template>
+      <span class="separator">/</span>
+      <span class="current">{{ data.title }}</span>
     </nav>
     
-    <div v-if="error" class="error-wrapper">
-      <h1>找不到服務</h1>
-      <p>{{ error }}</p>
-      <div class="back-link">
-        <a href="/service-us">
-          <span class="arrow">←</span> 返回服務列表
-        </a>
-      </div>
-    </div>
-    
-    <div v-else class="content-wrapper">
-      <h1>{{ props.service?.title }}</h1>
+    <div class="content-wrapper">
+      <h1>{{ data.title }}</h1>
       <div class="content">
-        {{ props.service?.content }}
+        {{ data.description }}
       </div>
       <div class="back-link">
         <a href="/service-us">
-          <span class="arrow">←</span> 返回服務列表
+          <span class="back-arrow">←</span>
+          <span>返回服務列表</span>
         </a>
       </div>
     </div>
@@ -57,8 +38,11 @@ onMounted(() => {
 }
 
 .breadcrumb {
-  margin-bottom: 1rem;
-  color: #666;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1rem;
 }
 
 .breadcrumb a {
@@ -70,21 +54,20 @@ onMounted(() => {
   text-decoration: underline;
 }
 
-.content-wrapper,
-.error-wrapper {
+.separator {
+  color: #999;
+  font-size: 1.1rem;
+}
+
+.current {
+  color: #666;
+}
+
+.content-wrapper {
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   padding: 2rem;
-}
-
-.error-wrapper {
-  text-align: center;
-  color: #666;
-}
-
-.error-wrapper h1 {
-  color: #dc3545;
 }
 
 h1 {
@@ -98,12 +81,13 @@ h1 {
   color: #34495e;
   margin-bottom: 2rem;
   font-size: 1.1rem;
+  white-space: pre-line;
 }
 
 .back-link {
   margin-top: 2rem;
   border-top: 1px solid #eee;
-  padding-top: 1rem;
+  padding-top: 1.5rem;
 }
 
 .back-link a {
@@ -111,15 +95,18 @@ h1 {
   text-decoration: none;
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.75rem;
+  font-size: 1.1rem;
+  padding: 0.5rem 0;
 }
 
 .back-link a:hover {
   text-decoration: underline;
 }
 
-.arrow {
-  font-size: 1.2rem;
+.back-arrow {
+  font-size: 1.4rem;
+  line-height: 1;
 }
 </style>
   

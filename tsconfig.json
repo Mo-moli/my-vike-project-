@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
-    "moduleResolution": "Bundler",
+    "moduleResolution": "Node",
     "strict": true,
     "jsx": "preserve",
     "allowJs": true,
@@ -10,7 +10,10 @@
     "isolatedModules": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "lib": ["ESNext", "DOM"]
+    "lib": ["ESNext", "DOM"],
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "types": ["vite/client", "vue"]
   },
   "include": [
     "pages/**/*.ts",
@@ -20,6 +23,7 @@
     "components/**/*.ts",
     "components/**/*.d.ts",
     "components/**/*.tsx",
-    "components/**/*.vue"
+    "components/**/*.vue",
+    "renderer/**/*.ts"
   ]
 }
