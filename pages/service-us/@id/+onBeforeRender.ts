@@ -9,13 +9,15 @@ interface PageContext {
 async function onBeforeRender(pageContext: PageContext) {
   const { id } = pageContext.routeParams
   const data = await getPageData(id)
+  const title = data?.title || '找不到服務名稱'
   return {
     pageContext: {
-      title: data?.title || '找不到服務名稱',
-      ogTitle: data?.title || '找不到 OG 標題',
       pageProps: {
-        title: data?.title || '找不到服務名稱',
-        ogTitle: data?.title || '找不到 OG 標題'
+        title,
+        ogTitle: title
+      },
+      documentProps: {
+        title
       }
     }
   }
