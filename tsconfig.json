@@ -10,8 +10,7 @@
     "isolatedModules": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "lib": ["ESNext", "DOM"],
-    "types": ["vite/client"]
+    "lib": ["ESNext", "DOM"]
   },
   "include": [
     "pages/**/*.ts",
