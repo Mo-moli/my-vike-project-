@@ -1,13 +1,20 @@
 <!-- pages/service-us/@id/+Page.vue -->
 <script setup lang="ts">
+// @ts-ignore
+import { useHead } from 'vike-vue'
+
 interface Props {
-  title?: string
-  ogTitle?: string
+  title: string
+  ogTitle: string
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  title: '預設標題',
-  ogTitle: '預設 OG 標題'
+const props = defineProps<Props>()
+
+useHead({
+  title: props.title,
+  meta: [
+    { property: 'og:title', content: props.ogTitle }
+  ]
 })
 </script>
 

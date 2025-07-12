@@ -5,6 +5,7 @@
     "preview": "vike preview"
   },
   "dependencies": {
+    "@unhead/vue": "^2.0.12",
     "@vitejs/plugin-vue": "^6.0.0",
     "@vue/compiler-sfc": "^3.5.17",
     "@vue/server-renderer": "^3.5.17",
