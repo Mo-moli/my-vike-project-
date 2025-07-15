@@ -2,7 +2,8 @@
   "scripts": {
     "dev": "vike dev",
     "build": "vike build",
-    "preview": "vike preview"
+    "preview": "vike preview",
+    "start": "NODE_ENV=production node dist/server/entry.mjs"
   },
   "dependencies": {
     "@unhead/vue": "^2.0.12",
@@ -23,5 +24,8 @@
     "vite": "^6.3.5",
     "vue-tsc": "^3.0.1"
   },
-  "type": "module"
+  "type": "module",
+  "engines": {
+    "node": "20.x"
+  }
 }
