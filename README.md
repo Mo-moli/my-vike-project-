@@ -18,7 +18,7 @@ docker compose up --build
 - 第一次會自動建置，之後只需 `docker compose up`
 
 ### 3. 開啟瀏覽器
-- 訪問 [http://localhost:3000](http://localhost:3000)
+- 訪問 [http://localhost:3000/service-us](http://localhost:3000)
 
 ---
 
