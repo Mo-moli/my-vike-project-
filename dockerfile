@@ -21,4 +21,6 @@ COPY . .
 RUN pnpm build
 
 # 啟動伺服器（根據你的專案啟動指令調整）
-CMD ["pnpm", "preview"]
+COPY start.sh .
+RUN chmod +x start.sh
+CMD ["./start.sh"]
