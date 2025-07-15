@@ -1,49 +1,50 @@
-Generated with [vike.dev/new](https://vike.dev/new) ([version 454](https://www.npmjs.com/package/create-vike/v/0.0.454)) using this command:
+# My Vike Project
 
+## 專案簡介
+
+本專案為 Vike + Vue 應用，支援 Open Graph、Docker Compose 一鍵啟動。
+
+---
+
+## 快速啟動（推薦 Docker Compose）
+
+### 1. 安裝 Docker 與 Docker Compose
+- 下載安裝：[Docker Desktop](https://www.docker.com/products/docker-desktop/)
+
+### 2. 啟動專案
 ```sh
-pnpm create vike@latest --vue
+docker compose up --build
 ```
+- 第一次會自動建置，之後只需 `docker compose up`
 
-## Contents
+### 3. 開啟瀏覽器
+- 訪問 [http://localhost:3000](http://localhost:3000)
 
-* [`/pages/+config.ts`](#pagesconfigts)
-* [Routing](#routing)
-* [`/pages/_error/+Page.vue`](#pages_errorpagevue)
-* [`/pages/+onPageTransitionStart.ts` and `/pages/+onPageTransitionEnd.ts`](#pagesonpagetransitionstartts-and-pagesonpagetransitionendts)
-* [SSR](#ssr)
-* [HTML Streaming](#html-streaming)
+---
 
-This app is ready to start. It's powered by [Vike](https://vike.dev) and [Vue](https://vuejs.org/guide/quick-start.html).
+## 手動啟動（本機 Node 環境）
 
-### `/pages/+config.ts`
+1. 安裝 [Node.js 20+](https://nodejs.org/)
+2. 安裝 [pnpm](https://pnpm.io/)
+3. 安裝依賴：
+   ```sh
+   pnpm install
+   ```
+4. 啟動開發伺服器：
+   ```sh
+   pnpm dev
+   ```
 
-Such `+` files are [the interface](https://vike.dev/config) between Vike and your code. It defines:
+---
 
-* A default [`<Layout>` component](https://vike.dev/Layout) (that wraps your [`<Page>` components](https://vike.dev/Page)).
-* A default [`title`](https://vike.dev/title).
-* Global [`<head>` tags](https://vike.dev/head-tags).
+## 目錄結構
+- `Dockerfile`、`docker-compose.yml`：Docker 一鍵啟動設定
+- `package.json`、`pnpm-lock.yaml`：依賴管理
+- `pages/`、`components/`：主要程式碼
 
-### Routing
+---
 
-[Vike's built-in router](https://vike.dev/routing) lets you choose between:
-
-* [Filesystem Routing](https://vike.dev/filesystem-routing) (the URL of a page is determined based on where its `+Page.vue` file is located on the filesystem)
-* [Route Strings](https://vike.dev/route-string)
-* [Route Functions](https://vike.dev/route-function)
-
-### `/pages/_error/+Page.vue`
-
-The [error page](https://vike.dev/error-page) which is rendered when errors occur.
-
-### `/pages/+onPageTransitionStart.ts` and `/pages/+onPageTransitionEnd.ts`
-
-The [`onPageTransitionStart()` hook](https://vike.dev/onPageTransitionStart), together with [`onPageTransitionEnd()`](https://vike.dev/onPageTransitionEnd), enables you to implement page transition animations.
-
-### SSR
-
-SSR is enabled by default. You can [disable it](https://vike.dev/ssr) for all your pages or only for some pages.
-
-### HTML Streaming
-
-You can enable/disable [HTML streaming](https://vike.dev/stream) for all your pages, or only for some pages while still using it for others.
+## 其他
+- 若有 .env 需求，請自行建立 .env 檔案
+- 有任何問題請聯絡專案負責人
 
