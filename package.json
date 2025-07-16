@@ -1,8 +1,7 @@
 {
   "scripts": {
-    "dev": "vike dev",
     "build": "vike build",
-    "preview": "vike preview"
+    "start": "NODE_ENV=production node dist/server/entry.mjs"
   },
   "dependencies": {
     "@unhead/vue": "^2.0.12",
