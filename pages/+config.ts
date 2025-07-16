@@ -9,10 +9,6 @@ export default {
   // https://vike.dev/Layout
   Layout,
 
-  // https://vike.dev/head-tags
-  title: "My Vike App",
-  description: "Demo showcasing Vike",
-
   // 啟用預渲染以支援 GitHub Pages 靜態部署
   prerender: true,
 
