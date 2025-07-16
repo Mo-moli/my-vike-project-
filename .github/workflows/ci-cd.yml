@@ -88,7 +88,7 @@ jobs:
     name: 🚀 部署到 Vercel
     runs-on: ubuntu-latest
     needs: build
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    if: false  # 暫時禁用 Vercel 部署
     steps:
       - name: 📥 檢出代碼
         uses: actions/checkout@v4
@@ -141,13 +141,13 @@ jobs:
   notify:
     name: 📢 部署通知
     runs-on: ubuntu-latest
-    needs: [deploy-vercel, deploy-pages]
+    needs: [deploy-pages]  # 移除 deploy-vercel 依賴
     if: always()
     steps:
       - name: 📢 部署結果通知
         run: |
-          if [ "${{ needs.deploy-vercel.result }}" == "success" ] || [ "${{ needs.deploy-pages.result }}" == "success" ]; then
-            echo "🎉 部署成功！"
+          if [ "${{ needs.deploy-pages.result }}" == "success" ]; then
+            echo "🎉 GitHub Pages 部署成功！"
           else
             echo "❌ 部署失敗"
             exit 1
