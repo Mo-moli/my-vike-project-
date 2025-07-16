@@ -13,5 +13,8 @@ export default {
   title: "My Vike App",
   description: "Demo showcasing Vike",
 
+  // 啟用預渲染以支援 GitHub Pages 靜態部署
+  prerender: true,
+
   extends: vikeVue as typeof vikeVue,
 } satisfies Config;

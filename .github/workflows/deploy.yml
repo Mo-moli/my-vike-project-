@@ -59,7 +59,7 @@ jobs:
       - name: 📤 上傳建置產物
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist'
+          path: './dist/client'
 
       - name: 🚀 部署到 GitHub Pages
         id: deployment
