@@ -126,16 +126,16 @@ jobs:
           path: dist/
 
       - name: 📄 設置 Pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v5
 
       - name: 📤 上傳到 Pages
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v3
         with:
           path: dist/
 
       - name: 🚀 部署 Pages
         id: deployment
-        uses: actions/deploy-pages@v3
+        uses: actions/deploy-pages@v4
 
   # ========== 通知階段 ==========
   notify:
