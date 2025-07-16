@@ -4,6 +4,7 @@ import { defineConfig } from "vite";
 import vike from "vike/plugin";
 
 export default defineConfig({
+  base: process.env.NODE_ENV === 'production' ? '/my-vike-project-/' : '/',
   plugins: [
     vike(),
     vue({

@@ -1,24 +1,27 @@
 <script setup lang="ts">
-// @ts-ignore
-const services = [
-  { id: '27', title: '4+2R代謝飲食法' },
-  { id: '28', title: '健康飲食方案' }
-] as const
+import { services } from './data'
 </script>
 
 <template>
   <div class="service-list">
     <nav class="breadcrumb">
-      <a href="/">首頁</a>
+      <a href="../">首頁</a>
       <span class="separator">/</span>
       <span class="current">服務列表</span>
     </nav>
-    <h1>服務項目</h1>
-    <ul>
-      <li v-for="service in services" :key="service.id">
-        <a :href="`/service-us/${service.id}`">{{ service.title }}</a>
-      </li>
-    </ul>
+    
+    <h1>我們的服務</h1>
+    <div class="services">
+      <div 
+        v-for="(service, id) in services" 
+        :key="id"
+        class="service-card"
+      >
+        <h2>{{ service.title }}</h2>
+        <p>{{ service.description }}</p>
+        <a :href="`${id}/`" class="service-link">了解更多</a>
+      </div>
+    </div>
   </div>
 </template>
 

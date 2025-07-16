@@ -8,9 +8,9 @@ const data = useData<Service>()
 <template>
   <div class="service-detail">
     <nav class="breadcrumb">
-      <a href="/">首頁</a>
+      <a href="../../">首頁</a>
       <span class="separator">/</span>
-      <a href="/service-us">服務列表</a>
+      <a href="../">服務列表</a>
       <span class="separator">/</span>
       <span class="current">{{ data.title }}</span>
     </nav>
@@ -21,7 +21,7 @@ const data = useData<Service>()
         {{ data.description }}
       </div>
       <div class="back-link">
-        <a href="/service-us">
+        <a href="../">
           <span class="back-arrow">←</span>
           <span>返回服務列表</span>
         </a>
