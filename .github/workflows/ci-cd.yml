@@ -131,7 +131,7 @@ jobs:
       - name: 📤 上傳到 Pages
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist/
+          path: dist/client/
 
       - name: 🚀 部署 Pages
         id: deployment
