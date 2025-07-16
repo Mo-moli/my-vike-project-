@@ -16,12 +16,27 @@ export const handler = async (event, context) => {
     const pageContext = await renderPage(pageContextInit)
     
     if (pageContext.httpResponse) {
+      // 確保 headers 是字串鍵值對格式
+      const responseHeaders = {}
+      if (pageContext.httpResponse.headers) {
+        for (const [key, value] of Object.entries(pageContext.httpResponse.headers)) {
+          // 確保 value 是字串
+          if (Array.isArray(value)) {
+            responseHeaders[key] = value.join(', ')
+          } else {
+            responseHeaders[key] = String(value)
+          }
+        }
+      }
+      
+      // 設定預設的 Content-Type
+      if (!responseHeaders['Content-Type'] && !responseHeaders['content-type']) {
+        responseHeaders['Content-Type'] = pageContext.httpResponse.contentType || 'text/html; charset=utf-8'
+      }
+      
       return {
         statusCode: pageContext.httpResponse.statusCode,
-        headers: {
-          ...pageContext.httpResponse.headers,
-          'Content-Type': pageContext.httpResponse.contentType || 'text/html; charset=utf-8'
-        },
+        headers: responseHeaders,
         body: pageContext.httpResponse.body
       }
     }
