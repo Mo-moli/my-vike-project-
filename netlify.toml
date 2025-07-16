@@ -1,16 +1,33 @@
 [build]
   command = "pnpm build"
   publish = "dist/client"
+  base = "."
 
 [build.environment]
   NODE_VERSION = "20"
   PNPM_VERSION = "10"
+  NPM_FLAGS = "--prefix=/dev/null"
 
+[context.production]
+  command = "pnpm build"
+  publish = "dist/client"
+
+[functions]
+  included_files = ["dist/**", "node_modules/**"]
+
+# 靜態資源重定向
+[[redirects]]
+  from = "/assets/*"
+  to = "/assets/:splat"
+  status = 200
+
+# API 路由重定向
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/server"
   status = 200
 
+# 所有其他路由重定向到 SSR 函數
 [[redirects]]
   from = "/*"
   to = "/.netlify/functions/server"

@@ -1,6 +1,7 @@
 {
   "scripts": {
     "build": "vike build",
+    "build:netlify": "vike build && cp -r node_modules/vike netlify/functions/node_modules/",
     "start": "NODE_ENV=production node dist/server/entry.mjs",
     "preview": "vike preview",
     "test": "jest",
