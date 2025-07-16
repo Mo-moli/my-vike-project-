@@ -1,0 +1,71 @@
+name: 📄 GitHub Pages 部署
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    name: 🏗️ 建置並部署到 GitHub Pages
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
+    steps:
+      - name: 📥 檢出代碼
+        uses: actions/checkout@v4
+
+      - name: 🟢 設置 Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: 📦 安裝 pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: latest
+
+      - name: 📚 快取依賴
+        uses: actions/cache@v4
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-
+
+      - name: 🔧 安裝依賴
+        run: pnpm install --frozen-lockfile
+
+      - name: 🏗️ 建置專案
+        run: pnpm build
+        env:
+          NODE_ENV: production
+
+      - name: 📄 設置 GitHub Pages
+        uses: actions/configure-pages@v4
+
+      - name: 📤 上傳建置產物
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: './dist'
+
+      - name: 🚀 部署到 GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v3
+
+      - name: ✅ 部署完成通知
+        run: |
+          echo "🎉 部署成功！"
+          echo "📄 網站連結: ${{ steps.deployment.outputs.page_url }}" 
