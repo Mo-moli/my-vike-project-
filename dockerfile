@@ -20,7 +20,8 @@ COPY . .
 # 建置專案
 RUN pnpm build
 
-# 啟動伺服器（根據你的專案啟動指令調整）
-COPY start.sh .
-RUN chmod +x start.sh
-CMD ["./start.sh"]
+# 暴露端口
+EXPOSE 3000
+
+# 啟動 Vike 預覽伺服器
+CMD ["pnpm", "preview"]

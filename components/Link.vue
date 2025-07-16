@@ -10,8 +10,15 @@ import { computed, useAttrs } from "vue";
 
 const pageContext = usePageContext();
 const { href } = useAttrs();
+
 const isActive = computed(() => {
   const { urlPathname } = pageContext;
+  
+  // 確保 href 是 string 類型
+  if (typeof href !== 'string') {
+    return false;
+  }
+  
   return href === "/" ? urlPathname === href : urlPathname.startsWith(href);
 });
 </script>
