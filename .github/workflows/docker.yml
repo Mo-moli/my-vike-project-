@@ -15,6 +15,7 @@ jobs:
   build:
     name: 🐳 建置 Docker 映像
     runs-on: ubuntu-latest
+    if: false  # 暫時禁用 Docker 工作流程
     permissions:
       contents: read
       packages: write
