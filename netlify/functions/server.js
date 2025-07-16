@@ -1,10 +1,10 @@
-const path = require('path')
-const { createRequire } = require('module')
+import path from 'path'
+import { fileURLToPath } from 'url'
 
-// 設定模組解析路徑
-const require2 = createRequire(path.join(process.cwd(), 'dist', 'server', 'entry.mjs'))
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
-exports.handler = async (event, context) => {
+export const handler = async (event, context) => {
   try {
     const { path: urlPath, httpMethod, headers, body, queryStringParameters } = event
     const url = `https://${headers.host}${urlPath}${queryStringParameters ? '?' + new URLSearchParams(queryStringParameters).toString() : ''}`
