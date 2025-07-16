@@ -19,7 +19,7 @@ import { services } from './data'
       >
         <h2>{{ service.title }}</h2>
         <p>{{ service.description }}</p>
-        <a :href="`${id}/`" class="service-link">了解更多</a>
+        <a :href="`${id}/`" class="service-link">進入頁面</a>
       </div>
     </div>
   </div>
