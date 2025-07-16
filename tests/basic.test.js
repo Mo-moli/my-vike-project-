@@ -22,9 +22,9 @@ describe('Basic Project Tests', () => {
     const packageJson = require('../package.json');
     
     expect(packageJson.scripts).toBeDefined();
-    expect(packageJson.scripts.dev).toBeDefined();
     expect(packageJson.scripts.build).toBeDefined();
     expect(packageJson.scripts.preview).toBeDefined();
+    expect(packageJson.scripts.test).toBeDefined();
   });
 
   test('Node.js 環境設定正確', () => {
